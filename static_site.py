@@ -17,7 +17,7 @@ class MarkdownPage(webapp2.RequestHandler):
     def get(self, page=''):
         if page == "" or page[-1] == '/':
             page += "index"
-        path = os.path.join(os.path.dirname(__file__), "pages", page + ".txt")
+        path = os.path.join(os.path.dirname(__file__), "pages", page + ".md")
         if not os.path.exists(path):
             self.abort(404)
 
