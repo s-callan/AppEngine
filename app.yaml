@@ -1,0 +1,25 @@
+application: s-callan
+version: 2
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /(.*)\.css
+  static_files: static/css/\1.css
+  upload: static/css/(.*)
+
+- url: /(.*)\.jpg
+  static_files: static/images/\1.jpg
+  upload: static/css/(.*).jpg
+
+- url: /.*
+  script: static_site.app
+
+libraries:
+- name: jinja2
+  version: latest
+
+builtins:
+- appstats: on
+- remote_api: on

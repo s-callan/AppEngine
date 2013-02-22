@@ -1,0 +1,14 @@
+
+body
+{
+    background-color: White;
+    color: Black;
+    font-family: Georgia;
+    font-size: 10pt;
+    line-height: normal;
+}
+
+blockquote
+{
+    font-style:italic;
+}
