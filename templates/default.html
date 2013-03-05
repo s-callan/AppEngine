@@ -2,11 +2,23 @@
 <html>
 <head>
 <link rel="Stylesheet" type="text/css" href="/global.css" />
-<title>%(title)s</title>
+<title>{{ title }}</title>
 </head>
 <body>
-%(body)s
-
-%(up)s
+<div id="header">
+{{ header }}
+</div>
+<div id="navigation">
+{{ navigation }}
+</div>
+<div id="right">
+{{ right }}
+</div>
+<div id="content">
+{{ body }}
+</div>
+<div id="footer">
+{{ footer }}
+</div>
 </body>
 </html>

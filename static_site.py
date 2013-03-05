@@ -10,7 +10,20 @@ import markdown2
 wrapper = codecs.open(os.path.join(os.path.dirname(__file__), "templates", "default.html"), encoding="UTF-8").read()
 
 loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), "templates"))
-jinja_environment = jinja2.Environment(loader=loader)
+env = jinja2.Environment(loader=loader)
+main_page = env.get_template("default.html")
+
+left = """<p>Left 1</p>
+<p>Left 2</p>
+<p>Left 3</p>
+<p>Left 4</p>
+"""
+
+right = """<p>right 1</p>
+<p>right 2</p>
+<p>right 3</p>
+<p>right 4</p>
+"""
 
 
 class MarkdownPage(webapp2.RequestHandler):
@@ -31,12 +44,13 @@ class MarkdownPage(webapp2.RequestHandler):
         else:
             up = '<a href="..">Up</a>'
 
-        page = wrapper % {"title": title, "body": body, "up":up}
+        page = main_page.render(header="", title=title, navigation=left, body=body, right=right, footer=up)
         self.response.out.write(page.encode("UTF-8"))
 
+routing = [
+    ('/', MarkdownPage),
+    ('/(.*).htm', MarkdownPage),
+    ('/(.*/)', MarkdownPage),
+]
 
-app = webapp2.WSGIApplication(
-    [('/', MarkdownPage),
-     ('/(.*).htm', MarkdownPage),
-     ('/(.*/)', MarkdownPage),
-    ])
+app = webapp2.WSGIApplication(routing)

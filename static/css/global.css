@@ -12,3 +12,22 @@ blockquote
 {
     font-style:italic;
 }
+
+#navigation {
+    float: left;
+    width: 10em;
+}
+
+
+#right {
+    float: right;
+    width: 10em;
+}
+
+#content {
+    margin: 0 10em;
+}
+
+#footer {
+    clear: both;
+}
